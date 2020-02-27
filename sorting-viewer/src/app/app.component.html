@@ -1,5 +1,8 @@
 <div class="toolbar-container">
-   <span (click)="sort()">Bubble</span>asdasd
+   <span class="sort-button" style="margin-left: 20px;" (click)="reset()">Reset</span>
+   <span class="sort-button" style="margin-left: 50px;" (click)="sort()">Bubble sort</span>
+   <span class="sort-button" style="margin-left: 5px;" (click)="sort()">Quicksort</span>
+   <span class="sort-button" style="margin-left: 5px;" (click)="sort()">Merge sort</span>
 </div>
 <div class="viewer-container">
    <app-tile-viewer [tiles]="values"></app-tile-viewer>
