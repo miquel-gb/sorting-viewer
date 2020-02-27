@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SortService } from './services/sort.service';
+import { Subject } from 'rxjs';
 
 @Component({
    selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent implements OnInit {
 
    public values: number[] = [];
 
-   private _valuesAmount: number = 50;
+   public valuesAmount: number = 50;
 
    constructor(private _sortService: SortService) {
 
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit {
 
    public generateValues() {
       this.values = [];
-      for (let i = 0; i < this._valuesAmount; i++) {
+      for (let i = 0; i < this.valuesAmount; i++) {
          this.values.push(this._getRndInt());
       }
    }
@@ -35,4 +36,12 @@ export class AppComponent implements OnInit {
       this._sortService.bubbleSort(this.values);
    }
 
+   public reset() {
+      this.generateValues();
+   }
+
+   public changeAmount() {
+      this._sortService.changeWidthSubject.next(this.valuesAmount);
+      this.generateValues();
+   }
 }

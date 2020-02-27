@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Subject } from 'rxjs';
+import { SortService } from 'src/app/services/sort.service';
 
 @Component({
   selector: 'app-tile-viewer',
@@ -7,20 +9,25 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 })
 export class TileViewerComponent implements OnInit {
 
-   @ViewChild('tileContainer') tileContainer: ElementRef;
+  @ViewChild('tileContainer') tileContainer: ElementRef;
 
-   @Input()
-   public tiles: number[];
+  @Input()
+  public tiles: number[];
 
-   public loading: boolean = true;
+  public loading: boolean = true;
 
-   public tileWidth: number;
+  public tileWidth: number;
 
-  constructor() { }
+  constructor(private _sortService: SortService) { }
 
   public ngOnInit() {
-     this.tileWidth = this._calcWidth();
-     this.loading = false;
+    this.tileWidth = this._calcWidth();
+    this._sortService.changeWidthSubject.subscribe(
+      () => {
+        this._calcWidth();
+      }
+    );
+    this.loading = false;
   }
 
   private _calcWidth(): number {

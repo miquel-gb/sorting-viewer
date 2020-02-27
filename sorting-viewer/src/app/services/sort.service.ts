@@ -1,14 +1,35 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
    providedIn: 'root'
 })
 export class SortService {
 
-   public speed: number = 200;
+   public speed: number = 100;
+
+  public changeWidthSubject: Subject<number> = new Subject<number>();
 
    constructor() { }
 
+   /* QUICKSORT */
+
+   /**
+    * Quick sort algorithm
+    * 
+    * @param list List of items to sort
+    */
+   public quicksort(list: number[]) {
+
+   }
+
+   /* BUBBLE SORT */
+
+   /**
+    * Bubble sort algorithm
+    * 
+    * @param list List of items to sort
+    */
    public bubbleSort(list: number[]) {
       let n = list.length;
 

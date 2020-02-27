@@ -3,6 +3,8 @@
    <span class="sort-button" style="margin-left: 50px;" (click)="sort()">Bubble sort</span>
    <span class="sort-button" style="margin-left: 5px;" (click)="sort()">Quicksort</span>
    <span class="sort-button" style="margin-left: 5px;" (click)="sort()">Merge sort</span>
+   
+<input type="number" [(ngModel)]="valuesAmount" (ngModelChange)="changeAmount()" name="valuesAmount" min="1" max="1000">
 </div>
 <div class="viewer-container">
    <app-tile-viewer [tiles]="values"></app-tile-viewer>
