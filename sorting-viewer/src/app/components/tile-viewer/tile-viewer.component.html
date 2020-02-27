@@ -1,0 +1,5 @@
+<div class="tile-viewer-wrapper" #tileContainer>
+   <div class="tiles" *ngIf="!loading">
+      <app-tile *ngFor="let tile of tiles" [value]="tile" [width]="tileWidth"></app-tile>
+   </div>
+</div>

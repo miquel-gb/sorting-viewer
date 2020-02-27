@@ -1,0 +1,12 @@
+:host {
+   height: 100%;
+
+   .tile {
+      background-color: yellow;
+      float: left;
+      margin-left: 6px;
+      text-align: center;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+   }
+}
