@@ -1,4 +1,4 @@
 
 <div class="tile" [ngStyle]="{'height': height + '%', 'width': width + 'px'}">
-   {{value}}
+   <span *ngIf="width > 25">{{value}}</span>
 </div>

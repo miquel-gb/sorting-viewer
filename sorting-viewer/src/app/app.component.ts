@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SortService } from './services/sort.service';
 
 @Component({
    selector: 'app-root',
@@ -9,11 +10,9 @@ export class AppComponent implements OnInit {
 
    public values: number[] = [];
 
-   private _valuesAmount: number = 60;
+   private _valuesAmount: number = 50;
 
-   private _speed: number = 250;
-
-   constructor() {
+   constructor(private _sortService: SortService) {
 
    }
 
@@ -33,25 +32,7 @@ export class AppComponent implements OnInit {
    }
 
    public sort() {
-      this._bubbleSort(this.values);
+      this._sortService.bubbleSort(this.values);
    }
 
-   private _bubbleSort(list: number[]) {
-      let n = list.length;
-
-      for (let i = 0; i < n - 1; i++) {
-         for (let j = 0; j < n - i - 1; j++) {
-            setTimeout(
-               () => {
-                  if (list[j] > list[j + 1]) {
-                     let temp = list[j];
-                     list[j] = list[j + 1];
-                     list[j + 1] = temp;
-                  }
-               }, (i * this._speed + j * this._speed)
-            )
-         }
-
-      }
-   }
 }
